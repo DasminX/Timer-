@@ -15,7 +15,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  overflow: hidden;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   background-color: var(--primary-background-color);
@@ -32,6 +31,53 @@ body {
   background-color: rgba(0, 0, 0, 0.45);
   border-radius: 0.75rem;
   box-shadow: 2px 2px 6px 2px #000;
+}
+
+.colors-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  top: 10%;
+  right: 3%;
+  height: 15rem;
+  width: 2.5rem;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.colors-container.show-colors {
+  opacity: 1;
+}
+
+.color {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid black;
+  box-shadow: 0 0 3px white;
+  cursor: pointer;
+}
+
+.blue {
+  background-color: #3498db;
+}
+
+.green {
+  background-color: rgb(31, 160, 31);
+}
+
+.red {
+  background-color: #c40d0d;
+}
+
+.purple {
+  background-color: rgb(122, 31, 122);
+}
+
+.yellow {
+  background-color: rgb(247, 247, 19);
 }
 
 .tools-container {
@@ -73,7 +119,7 @@ body {
   font-size: 3.6rem;
 }
 
-.last-time {
+.recent-time {
   color: #dadada;
 }
 
@@ -112,6 +158,11 @@ body {
 
 .archived {
   color: white;
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .archived span {
@@ -165,4 +216,72 @@ body {
 .close-modal {
   width: 35%;
   margin-bottom: 0.75rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    width: 65%;
+    height: 75%;
+  }
+
+  .modal-container {
+    width: 65%;
+    height: 55%;
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .container {
+    width: 65%;
+    height: 80%;
+  }
+
+  .modal-container {
+    width: 55%;
+    height: 50%;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .container {
+    width: 90%;
+    height: 90%;
+  }
+
+  .modal-container {
+    width: 75%;
+  }
+  .buttons-container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .modal-container {
+    width: 80%;
+    height: 60%;
+  }
+}
+
+@media screen and (max-width: 915px) and (orientation: landscape) {
+  .container {
+    margin-top: 15%;
+    width: 80%;
+    height: 125%;
+  }
+
+  .modal-container {
+    width: 70%;
+    height: 80%;
+  }
+
+  .archived {
+    font-size: 80%;
+  }
+}
+
+@media screen and (max-width: 720px) and (orientation: landscape) {
+  .container {
+    height: 110%;
+  }
 }
