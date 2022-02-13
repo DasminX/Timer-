@@ -6,11 +6,11 @@ There, I'd like to show you project, which I made <span color="red">ON MY OWN<sp
 
 ------------------------
 <h2>Functionality</h2>
-- Play button - after clicking it timer runs, counting up the current time every second (it's secured from being triggered more than one time by adding css class on timer's parent and it's watching it if contains that on every click)
-- Pause button - after clicking it timer stops, but keeps current time with the value present in click-time
-- Stop button - after clicking it, resets timer, interval function and adds measurement to measurement-container
-- Reset button - after clicking it, resets every element to the start, including removing measurements from measurements-container
-- Archive button - toggles a view on measurements-container
+1) Play button - after clicking it timer runs, counting up the current time every second (it's secured from being triggered more than one time by adding css class on timer's parent and it's watching it if contains that on every click);
+2) Pause button - after clicking it timer stops, but keeps current time with the value present in click-time;
+3) Stop button - after clicking it, resets timer, interval function and adds measurement to measurement-container;
+4) Reset button - after clicking it, resets every element to the start, including removing measurements from measurements-container;
+5) Archive button - toggles a view on measurements-container;
   
   ALSO, THERE ARE TWO ADDITIONAL FEATURES AT RIGHT TOP:
   
