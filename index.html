@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="tools-container">
+        <i class="fa-solid fa-paintbrush brush-button"></i>
+        <i class="fa-solid fa-question modal-button"></i>
+      </div>
+      <div class="main-field">
+        <h1>Stoper</h1>
+        <div class="time-container">
+          <h2 class="current-time">
+            <span class="minutes">0</span>:<span class="seconds">00</span>
+          </h2>
+          <p class="last-time"></p>
+        </div>
+        <div class="buttons-container">
+          <button class="play-button"><i class="fa-solid fa-play"></i></button>
+          <button class="pause-button">
+            <i class="fa-solid fa-pause"></i>
+          </button>
+          <button class="stop-button"><i class="fa-solid fa-stop"></i></button>
+          <button class="reset-button">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <button class="archive-button">Archiwum</button>
+        </div>
+      </div>
+      <div class="archived hidden"></div>
+    </div>
+    <div class="overlay hidden"></div>
+    <div class="modal-container hidden">
+      <h1>Instrukcja:</h1>
+      <div class="instruction-container">
+        <p><i class="fa-solid fa-play"></i> - start</p>
+        <p><i class="fa-solid fa-pause"></i> - pauza</p>
+        <p><i class="fa-solid fa-stop"></i> - stop</p>
+        <p>
+          <i class="fa-solid fa-xmark"></i> - skasuj wszystko (lacznie z
+          archiwum)
+        </p>
+        <p>
+          <span class="archive-info">Archiwum</span> - zobacz wcześniejsze
+          pomiary
+        </p>
+      </div>
+      <button class="close-modal">Zamknij</button>
+    </div>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
