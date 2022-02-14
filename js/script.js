@@ -103,7 +103,7 @@
 
     recentTime.textContent = `Ostatni czas: ${minutes}:${seconds}`;
 
-    timeContainer.classList.remove("timer-run");
+   
 
     archivedNumber++;
     if (archivedNumber > 6) {
@@ -116,7 +116,7 @@
   `
     );
 
-    clearInterval(timer);
+    pauseTimer();
   };
 
   stopButton.addEventListener("click", stopAndSaveTime);
@@ -128,8 +128,7 @@
     recentTime.textContent = ``;
     archivedEl.innerHTML = ``;
 
-    timeContainer.classList.remove("timer-run");
-    clearInterval(timer);
+    pauseTimer();
   };
 
   resetButton.addEventListener("click", resetAll);
