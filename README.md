@@ -25,8 +25,10 @@ There, I'd like to show you project, which I made <span color="red">ON MY OWN<sp
   
   *** Help icon - contains descriptions of all buttons
   
-  /////////////////////////////////////
-  todo: localstorage, more than 6 measurements on list rather than elements of div, all in english
+///////////////////////////////////////////////////////////////////
+  Also, local storage to remember color chosen by user has been added.
+  
+  Moreover, limit of 6 tasks was changed to unlimited with custom scrollbar :)
   
   MORE SOON :)
   
