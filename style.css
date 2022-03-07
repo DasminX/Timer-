@@ -143,6 +143,10 @@ body {
   transition: color 0.2s;
 }
 
+.buttons-container button:active {
+  background-color: #131313;
+}
+
 .buttons-container button:hover,
 .close-modal:hover {
   color: var(--primary-color);
@@ -156,17 +160,47 @@ body {
   letter-spacing: 1px;
 }
 
+.archived-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  width: 45%;
+  max-height: 180px;
+  overflow-y: hidden;
+}
+
+.archived-wrapper.active {
+  overflow-y: auto;
+}
+
+.archived-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.archived-wrapper::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.archived-wrapper::-webkit-scrollbar-thumb {
+  background-color: #111;
+}
+
 .archived {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  flex-grow: 2;
   color: white;
 }
 
 .archived span {
   margin-left: 3rem;
+}
+
+.archive-button.active {
+  color: var(--primary-color);
+  border-width: 2px;
+  background-color: #111;
 }
 
 /* modal and body acting */
@@ -194,7 +228,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  visibility: hidden;
 }
 
 .instruction-container {

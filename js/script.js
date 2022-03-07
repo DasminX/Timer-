@@ -1,143 +1,154 @@
-"use strict";
+"use strict"
+;(() => {
+  /* Get local storage */
+  const getLocalStorageColor = (name) => {
+    const value = localStorage.getItem(name)
+    if (!name) return
+    document.documentElement.style.setProperty(name, value)
+  }
 
-(() => {
+  const saveColorToLocalStorage = (name, value) => {
+    localStorage.setItem(name, value)
+  }
+
+  getLocalStorageColor("--primary-color")
+
   /* Time variables */
-  let time = 0;
-  let timer;
-  let minutes;
-  let seconds;
+  let time = 0
+  let timer
+  let minutes
+  let seconds
 
   /* Brush variables */
-  const brushButton = document.querySelector(".brush-button");
-  const colorsContainer = document.querySelector(".colors-container");
-  const colors = document.querySelectorAll(".color");
+  const brushButton = document.querySelector(".brush-button")
+  const colorsContainer = document.querySelector(".colors-container")
+  const colors = document.querySelectorAll(".color")
 
   /* Modal variables */
-  const openModalButton = document.querySelector(".modal-button");
-  const closeModalButton = document.querySelector(".close-modal");
-  const modalContainer = document.querySelector(".modal-container");
-  const overlay = document.querySelector(".overlay");
+  const openModalButton = document.querySelector(".modal-button")
+  const closeModalButton = document.querySelector(".close-modal")
+  const modalContainer = document.querySelector(".modal-container")
+  const overlay = document.querySelector(".overlay")
 
   /* Starting timer variables */
-  const playButton = document.querySelector(".play-button");
-  const minutesEl = document.querySelector(".minutes");
-  const secondsEl = document.querySelector(".seconds");
-  const timeContainer = document.querySelector(".time-container");
+  const playButton = document.querySelector(".play-button")
+  const minutesEl = document.querySelector(".minutes")
+  const secondsEl = document.querySelector(".seconds")
+  const timeContainer = document.querySelector(".time-container")
 
   /* Pausing timer variable */
-  const pauseButton = document.querySelector(".pause-button");
+  const pauseButton = document.querySelector(".pause-button")
 
   /* Stopping timer and saving timer's recent score to archives' variables */
-  const recentTime = document.querySelector(".recent-time");
-  const stopButton = document.querySelector(".stop-button");
+  const recentTime = document.querySelector(".recent-time")
+  const stopButton = document.querySelector(".stop-button")
 
-  let archivedNumber = 0;
+  let archivedNumber = 0
 
   /* Reset button variable */
-  const resetButton = document.querySelector(".reset-button");
+  const resetButton = document.querySelector(".reset-button")
 
   /* Archive variables */
-  const archiveButton = document.querySelector(".archive-button");
-  const archivedEl = document.querySelector(".archived");
+  const archiveButton = document.querySelector(".archive-button")
+  const archivedEl = document.querySelector(".archived")
+  const archivedWrapper = document.querySelector(".archived-wrapper")
 
   ///////////////////////////////////////////////////////////////
   /* Brush container functions and listeners */
   colors.forEach((col) =>
     col.addEventListener("click", (e) => {
-      const colorCode = getComputedStyle(e.target).backgroundColor;
-      document.documentElement.style.setProperty("--primary-color", colorCode);
+      const colorCode = getComputedStyle(e.target).backgroundColor
+      document.documentElement.style.setProperty("--primary-color", colorCode)
+      saveColorToLocalStorage("--primary-color", colorCode)
     })
-  );
+  )
 
   const showColors = () => {
-    colorsContainer.classList.toggle("show-colors");
-  };
+    colorsContainer.classList.toggle("show-colors")
+  }
 
-  brushButton.addEventListener("click", showColors);
+  brushButton.addEventListener("click", showColors)
 
   /* Modal functions and listeners */
   const toggleModal = () => {
-    [modalContainer, overlay].forEach((el) => el.classList.toggle("hidden"));
-  };
+    ;[modalContainer, overlay].forEach((el) => el.classList.toggle("hidden"))
+  }
 
-  openModalButton.addEventListener("click", toggleModal);
-  closeModalButton.addEventListener("click", toggleModal);
+  openModalButton.addEventListener("click", toggleModal)
+  closeModalButton.addEventListener("click", toggleModal)
 
   /* Starting timer functions and listeners */
   const runTimer = () => {
     if (!timeContainer.classList.contains("timer-run")) {
-      timeContainer.classList.add("timer-run");
+      timeContainer.classList.add("timer-run")
       timer = setInterval(() => {
-        time++;
-        seconds = Math.floor(time % 60);
-        seconds = seconds < 10 ? `0${seconds}` : seconds;
-        minutes = Math.floor(time / 60);
-        minutesEl.textContent = minutes;
-        secondsEl.textContent = seconds;
-      }, 1000);
+        time++
+        seconds = Math.floor(time % 60)
+        seconds = seconds < 10 ? `0${seconds}` : seconds
+        minutes = Math.floor(time / 60)
+        minutesEl.textContent = minutes
+        secondsEl.textContent = seconds
+      }, 1000)
     }
-  };
+  }
 
-  playButton.addEventListener("click", runTimer);
+  playButton.addEventListener("click", runTimer)
 
   /* Pausing timer functions and listeners */
   const pauseTimer = () => {
-    clearInterval(timer);
-    timeContainer.classList.remove("timer-run");
-  };
+    clearInterval(timer)
+    timeContainer.classList.remove("timer-run")
+  }
 
-  pauseButton.addEventListener("click", pauseTimer);
+  pauseButton.addEventListener("click", pauseTimer)
 
   /* Helper function to keep DRY */
   const timeResetter = () => {
-    time = 0;
-    minutesEl.textContent = "0";
-    secondsEl.textContent = "00";
-  };
+    time = 0
+    minutesEl.textContent = "0"
+    secondsEl.textContent = "00"
+  }
 
   /* Stopping and saving timer functions and listeners*/
   const stopAndSaveTime = () => {
-    if (secondsEl.textContent === "00") return;
+    if (secondsEl.textContent === "00") return
 
-    timeResetter();
+    timeResetter()
 
-    recentTime.textContent = `Ostatni czas: ${minutes}:${seconds}`;
+    recentTime.textContent = `Ostatni czas: ${minutes}:${seconds}`
 
-   
+    archivedNumber++
 
-    archivedNumber++;
-    if (archivedNumber > 6) {
-      archivedNumber = 1;
-      archivedEl.innerHTML = ``;
-    }
     archivedEl.insertAdjacentHTML(
       "beforeend",
       `<p>Pomiar nr ${archivedNumber}: <span>${minutes}:${seconds}</span></p>
   `
-    );
+    )
 
-    pauseTimer();
-  };
+    pauseTimer()
+  }
 
-  stopButton.addEventListener("click", stopAndSaveTime);
+  stopButton.addEventListener("click", stopAndSaveTime)
 
   /* Reset button functions and listeners */
   const resetAll = () => {
-    timeResetter();
-    archivedNumber = 0;
-    recentTime.textContent = ``;
-    archivedEl.innerHTML = ``;
+    timeResetter()
+    archivedNumber = 0
+    recentTime.textContent = ``
+    archivedEl.innerHTML = ``
 
-    pauseTimer();
-  };
+    pauseTimer()
+  }
 
-  resetButton.addEventListener("click", resetAll);
+  resetButton.addEventListener("click", resetAll)
 
   /* Archive functions and listeners */
 
   const toggleArchived = () => {
-    archivedEl.classList.toggle("hidden");
-  };
+    archivedEl.classList.toggle("hidden")
+    archiveButton.classList.toggle("active")
+    archivedWrapper.classList.toggle("active")
+  }
 
-  archiveButton.addEventListener("click", toggleArchived);
-})();
+  archiveButton.addEventListener("click", toggleArchived)
+})()

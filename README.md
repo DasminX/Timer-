@@ -1,6 +1,4 @@
 # Timer-not-finished-yet
-<h1> LIVE VERSION: http://dasminstoper.cba.pl/ </h1>
-
 <h1 color="blue"> Timer </h1>
 
 Hello everyone!
@@ -25,10 +23,8 @@ There, I'd like to show you project, which I made <span color="red">ON MY OWN<sp
   
   *** Help icon - contains descriptions of all buttons
   
-///////////////////////////////////////////////////////////////////
-  Also, local storage to remember color chosen by user has been added.
-  
-  Moreover, limit of 6 tasks was changed to unlimited with custom scrollbar :)
+  /////////////////////////////////////
+  todo: localstorage, more than 6 measurements on list rather than elements of div, all in english
   
   MORE SOON :)
   
